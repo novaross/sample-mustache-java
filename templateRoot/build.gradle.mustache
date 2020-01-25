@@ -1,0 +1,20 @@
+plugins {
+id 'java'
+}
+
+group '{{group}}'
+version '{{version}}'
+
+sourceCompatibility = 1.8
+
+repositories {
+mavenCentral()
+}
+
+dependencies {
+
+{{#dependencies}}
+    '{{annotation}}:{{group}}:{{name}}:{{version}}'
+{{/dependencies}}
+
+}

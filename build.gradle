@@ -30,4 +30,11 @@ dependencies {
 
     // https://mvnrepository.com/artifact/commons-io/commons-io
     implementation 'commons-io:commons-io:2.6'
+
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.10.1'
+
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+    // compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.10.1'
+
 }
