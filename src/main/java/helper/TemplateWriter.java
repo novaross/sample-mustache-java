@@ -34,7 +34,14 @@ public class TemplateWriter {
         files.forEach(file -> {
             String sourceFile = file.getAbsolutePath();
             int indexOfTemplateFolder = sourceFile.indexOf(templateFolder);
+            String basePackageFolder = basePackageToFolder(templateContextMap.get(HelperConstants.BASE_PACKAGE_PROPERTY).toString());
+            // construct target file path from the target folder and the relative path of the original file
             String targetFile = targetFolder + sourceFile.substring(indexOfTemplateFolder + templateFolder.length());
+            // make the target file path consistent
+            targetFile = targetFile.replace('\\', '/');
+            // expand the base package folder in the template folder to path according to the provided base package
+            targetFile = targetFile.replace(HelperConstants.BASE_PACKAGE_PLACEHOLDER, basePackageFolder);
+            log.debug("targetFile: {}", targetFile);
             if (FileOperations.isMatchExtension(sourceFile, HelperConstants.TEMPLATE_EXTENSION)) {
                 // this is a template file, process and save to target location
                 targetFile = FileOperations.removeFileExtension(targetFile);
@@ -42,6 +49,7 @@ public class TemplateWriter {
                 String content = compileMustacheTemplate(sourceFile, templateContextMap);
                 saveContentAsFile(targetFile, content);
             } else {
+                // this is a regular file, just copy it to the target location
                 try {
                     FileOperations.copyFile(sourceFile, targetFile);
                 } catch (IOException e) {
@@ -91,6 +99,10 @@ public class TemplateWriter {
         List<File> files = new ArrayList<>();
         paths.forEach(path -> files.add(path.toFile()));
         return files;
+    }
+
+    public String basePackageToFolder(String basePackage) {
+        return basePackage.replace(".", "/");
     }
 
 }

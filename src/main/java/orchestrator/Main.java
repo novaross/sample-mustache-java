@@ -1,5 +1,7 @@
 package orchestrator;
 
+import helper.TemplateWriter;
+import lombok.extern.slf4j.Slf4j;
 import modbase.ArtifactDependency;
 import modbase.ContextModBase;
 import modbase.ModBase;
@@ -7,13 +9,14 @@ import modbase.ModBase;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 public class Main {
 
     public static void main(String[] args) {
 
         ContextMain contextMain = new ContextMain();
-        contextMain.setBasePackage("my.base.package");
-        contextMain.setGroup("org.example");
+        contextMain.setBasePackage("com.example.myapp");
+        contextMain.setGroup("com.example");
         contextMain.setVersion("1.0-SNAPSHOT");
         contextMain.setTargetFolder("c:/temp/generated");
         List<ArtifactDependency> dependencies = new ArrayList<>();
@@ -33,6 +36,9 @@ public class Main {
         ModBase modBase = new ModBase();
         modBase.setContextModBase(contextModBase);
         modBase.process();
+        String path="c:/temp/generated/src/main/java/basepackage/helper/FileOperations.java";
+        log.debug("Replaced: {}", path.replace("basepackage","com/example"));
+
 
     }
 
