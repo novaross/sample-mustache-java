@@ -1,4 +1,4 @@
-package {{basePackage}}.orchestrator;
+package com.rs;
 
 import lombok.Data;
 

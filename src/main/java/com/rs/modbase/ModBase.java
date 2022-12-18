@@ -1,7 +1,8 @@
-package {{basePackage}}.modbase;
+package com.rs.modbase;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import helper.TemplateWriter;
+
+import com.rs.helper.TemplateWriter;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 

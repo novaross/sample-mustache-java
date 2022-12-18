@@ -1,4 +1,4 @@
-package modbase;
+package com.rs.modbase;
 
 import lombok.Data;
 

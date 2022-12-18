@@ -1,4 +1,4 @@
-package {{basePackage}}.helper;
+package com.rs.helper;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
@@ -15,7 +15,7 @@ public class FileOperations {
 
     public static boolean isMatchExtension(String filename, String extension) {
         String fileExtension = FilenameUtils.getExtension(filename);
-        return null != extension && !extension.isEmpty() && extension.toLowerCase().equals(fileExtension.toLowerCase());
+        return null != extension && !extension.isEmpty() && extension.equalsIgnoreCase(fileExtension);
     }
 
     public static String removeFileExtension(String filename) {

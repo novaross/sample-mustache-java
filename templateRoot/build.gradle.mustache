@@ -1,5 +1,5 @@
 plugins {
-id 'java'
+    id 'java'
 }
 
 group '{{group}}'
@@ -8,13 +8,13 @@ version '{{version}}'
 sourceCompatibility = 1.8
 
 repositories {
-mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
 
 {{#dependencies}}
-    '{{annotation}}:{{group}}:{{name}}:{{version}}'
+    {{annotation}} '{{group}}:{{name}}:{{version}}'
 {{/dependencies}}
 
 }

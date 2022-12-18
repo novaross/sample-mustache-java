@@ -1,4 +1,4 @@
-package helper;
+package com.rs.helper;
 
 public class HelperConstants {
 

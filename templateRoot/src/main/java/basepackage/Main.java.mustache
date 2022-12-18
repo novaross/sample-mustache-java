@@ -1,0 +1,22 @@
+package {{basePackage}};
+
+import com.example.myapp.pojo.SamplePojo;
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ * This class was generated using a mustache template
+ */
+@Slf4j
+public class Main {
+
+    public static void main(String[] args) {
+
+        SamplePojo samplePojo = new SamplePojo();
+        samplePojo.setFirstName("John");
+        samplePojo.setLastName("Doe");
+        samplePojo.setAge("39");
+        log.debug("This is me {}", samplePojo);
+
+    }
+
+}

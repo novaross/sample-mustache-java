@@ -1,40 +1,49 @@
 plugins {
     id 'java'
+    id 'application'
 }
 
-group 'org.example'
+group 'com.rs'
 version '1.0-SNAPSHOT'
-
-sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
 }
 
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-    // https://mvnrepository.com/artifact/com.github.spullara.mustache.java/compiler
-    implementation 'com.github.spullara.mustache.java:compiler:0.8.9'
+ext {
+    javaMainClass = "com.rs.Main"
+}
 
-    // https://github.com/google/gson
-    implementation 'com.google.code.gson:gson:2.8.6'
+application {
+    mainClassName = javaMainClass
+}
+
+dependencies {
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 
     // https://projectlombok.org/setup/gradle
-    compileOnly 'org.projectlombok:lombok:1.18.10'
-    annotationProcessor 'org.projectlombok:lombok:1.18.10'
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+    // https://github.com/google/gson
+    implementation 'com.google.code.gson:gson:2.10'
 
     // logback
-    implementation 'ch.qos.logback:logback-classic:1.2.3'
-    implementation 'ch.qos.logback.contrib:logback-json-core:0.1.5'
-    implementation 'org.slf4j:slf4j-api:1.7.25'
+    implementation 'ch.qos.logback:logback-classic:1.4.5'
+    implementation 'org.slf4j:slf4j-api:2.0.6'
 
     // https://mvnrepository.com/artifact/commons-io/commons-io
-    implementation 'commons-io:commons-io:2.6'
+    implementation 'commons-io:commons-io:2.11.0'
+
+    // https://mvnrepository.com/artifact/com.github.spullara.mustache.java/compiler
+    implementation 'com.github.spullara.mustache.java:compiler:0.8.18'
 
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.10.1'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.1'
+}
 
-    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
-    // compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.10.1'
-
+test {
+    useJUnitPlatform()
 }
